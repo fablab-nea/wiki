@@ -1,0 +1,14 @@
+[book]
+authors = [
+]
+language = "de"
+multilingual = false
+src = "src"
+title = "Wiki – FabLab Bad Windsheim"
+
+[output.html]
+git-repository-url = "https://github.com/fablab-nea/wiki"
+git-repository-icon = "fa-pencil-square-o"
+additional-js = [
+  "assets/edit.js"
+]
