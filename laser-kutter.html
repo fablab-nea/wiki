@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Wiki – FabLab Bad Windsheim</title>
-                <meta name="robots" content="noindex" />
+        <title>LaserKutter - Wiki – FabLab Bad Windsheim</title>
                 
 
         <!-- Custom HTML head -->
@@ -83,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Startseite</a></li><li class="chapter-item expanded "><a href="etiketten.html"><strong aria-hidden="true">1.</strong> Etiketten</a></li><li class="chapter-item expanded "><a href="laser-kutter.html"><strong aria-hidden="true">2.</strong> LaserKutter</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Startseite</a></li><li class="chapter-item expanded "><a href="etiketten.html"><strong aria-hidden="true">1.</strong> Etiketten</a></li><li class="chapter-item expanded "><a href="laser-kutter.html" class="active"><strong aria-hidden="true">2.</strong> LaserKutter</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -121,7 +120,10 @@
                                                                         <a href="https://github.com/fablab-nea/wiki" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                
+                                                                        <a href="https://github.com/fablab-nea/wiki/edit/master/src/laser-kutter.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -147,36 +149,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="wiki-des-fablab-bad-windsheim"><a class="header" href="#wiki-des-fablab-bad-windsheim">Wiki des FabLab Bad Windsheim</a></h1>
-<p>In diesem Wiki werden Anleitungen, Maschinen-Parameter und ähnliches gesammelt.</p>
-<h2 id="wie-kann-ich-das-wiki-bearbeiten"><a class="header" href="#wie-kann-ich-das-wiki-bearbeiten">Wie kann ich das Wiki bearbeiten?</a></h2>
-<p>Zum Bearbeiten des Wikis benötigst Du einen
-<a href="https://github.com">GitHub</a>-Account.</p>
-<p>Über den Knopf in der oberen rechten Bildschirm-Ecke gelangst Du zu einer
-Seite, auf der Du den Inhalt direkt bearbeiten kannst. Unter Umständen musst Du
-das Wiki vorher „forken“, also eine Kopie erstellen, auf die Du Schreibzugriff
-hast. Wenn Du fertig mit dem Bearbeiten bist, kannst Du, wenn Du die
-Berechtigung hast, den Inhalt direkt „committen“ oder einen „Pull Request“
-erstellen. Bei ersterem ist die Änderung nach wenigen Sekunden Teil des Wikis,
-bei letzterem muss erst ein Mitglied des FabLabs Deine Änderung genehmigen.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="etiketten"><a class="header" href="#etiketten">Etiketten</a></h1>
-<p>Zum Drucken von Etiketten kann man einen brother P-Touch PT-P700 verwenden.
-Zum Ansteuern gibt es <code>ptouch-print</code> (<code>nix-shell -p ptouch-print</code>).</p>
-<h2 id="wichtige-optionen"><a class="header" href="#wichtige-optionen">Wichtige Optionen</a></h2>
-<ul>
-<li><code>--writepng /tmp/foo.png</code> schreibt ein PNG von dem, was es drucken würde</li>
-<li><code>--text &quot;foo&quot;</code> schreibt <code>foo</code></li>
-<li><code>--text &quot;foo&quot; &quot;bar&quot;</code> schreibt <code>foo</code> und <code>bar</code> darunter</li>
-<li><code>--cutmark</code> macht eine vertikale gestrichelte Linie,
-um mehrere Etiketten in einem zu drucken
-und Band zu sparen</li>
-<li><code>--text &quot;foo&quot; &quot;bar&quot; --text &quot;baz&quot;</code> schreibt <code>foo</code>, <code>baz</code> darunter
-und <code>bar</code> hinter beides</li>
-</ul>
-<h2 id="beispiel"><a class="header" href="#beispiel">Beispiel</a></h2>
-<pre><code class="language-shell">ptouch-print --font &quot;Iosevka Nerd Font&quot; --text &quot;X&quot; --cutmark --text &quot;Y&quot; --cutmark --text &quot;X&quot; --text &quot;CAN&quot; &quot;121&quot; --cutmark --text &quot;Y&quot; --text &quot;CAN&quot; &quot;122&quot; --cutmark --text &quot;Z&quot;
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="laserkutter"><a class="header" href="#laserkutter">LaserKutter</a></h1>
+                        <h1 id="laserkutter"><a class="header" href="#laserkutter">LaserKutter</a></h1>
 <p>Der <em>LaserKutter</em> ist ein <em>Bodor 1309XM</em> Laser-Cutter.
 Aufgrund von gravierenden Problemen mit dem Original-Board (Ruida RDC6332M),
 betreiben wir ihn mit einem Duet3D Mini5+ und einem PanelDue.</p>
@@ -205,6 +178,9 @@ mit <code>M115 Bn</code> kann die Firmware-Version des Expansion-Boards mit CAN-
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="etiketten.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         
                         
                         <div style="clear: both"></div>
@@ -213,6 +189,9 @@ mit <code>M115 Bn</code> kann die Firmware-Version des Expansion-Boards mit CAN-
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="etiketten.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
                             </nav>
 
@@ -236,11 +215,6 @@ mit <code>M115 Bn</code> kann die Firmware-Version des Expansion-Boards mit CAN-
 
         <!-- Custom JS scripts -->
         
-                        <script type="text/javascript">
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
-                
+        
     </body>
 </html>
