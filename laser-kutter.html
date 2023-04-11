@@ -150,10 +150,69 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="laserkutter"><a class="header" href="#laserkutter">LaserKutter</a></h1>
+<h2 id="benutzung-eines-lasercutters"><a class="header" href="#benutzung-eines-lasercutters">Benutzung eines Lasercutters</a></h2>
+<h3 id="schneiden"><a class="header" href="#schneiden">Schneiden</a></h3>
+<p>Zum Schneiden wird eine <a href="https://de.wikipedia.org/wiki/Vektorgrafik">Vektorgrafik</a> benötigt. Es werden u.A. folgende Formate unterstützt:</p>
+<ul>
+<li>SVG (<code>*.svg</code>)</li>
+<li>DXF (<code>*.dxf</code>)</li>
+<li>PDF (<code>*.pdf</code>)</li>
+<li>Adobe Illustrator (<code>*.ai</code>)</li>
+<li>HPGL (<code>*.hpgl</code>, <code>*.plt</code>)</li>
+</ul>
+<p>Zum erstellen einer neuen Datei oder zum bearbeiten einer bestehenden kann <a href="https://inkscape.org/">Inkscape</a> verwedet werden (zu finden unter <code>Anwendungen</code>→ <code>Grafik</code>→ <code>Inkscape</code>)</p>
+<h3 id="gravieren"><a class="header" href="#gravieren">Gravieren</a></h3>
+<p>Zum Gravieren reicht eine Bitmap-Grafik, eine Vektorgrafik kann natürlich auch verwendet werden.</p>
+<h2 id="lasercutter-einschalten"><a class="header" href="#lasercutter-einschalten">Lasercutter einschalten</a></h2>
+<ol>
+<li>Klappe öffnen</li>
+<li>Hauptschalter einschalten</li>
+<li>Schlüsselschalter drehen, die grüne Kontrolleuchte sollte nun leuchten</li>
+<li>sich vergewissern, dass sich nichts im Bewegungsbereich befindet und ggf. den Tisch mit Hilfe des Drucktasters absenken</li>
+<li>Alle Achsen homen (über die <a href="http://laserkutter.lab.fablab-nea.de/">Weboberfläche</a> oder am Gerät über das Display)</li>
+</ol>
+<h2 id="einlegen-des-materials"><a class="header" href="#einlegen-des-materials">Einlegen des Materials</a></h2>
+<ol>
+<li>Das Portal nach hinten fahren, dazu am besten Makro <code>Be- und Entladen</code> über die <a href="http://laserkutter.lab.fablab-nea.de/">Weboberfläche</a> oder am Gerät über das Display ausführen.</li>
+<li>Die Klappe öffnen</li>
+<li>Am einfachsten ist es, das Material links unten (Koordinate <code>X0 Y0</code>) auszurichten. Bei Gravuren ist eventuell ein Abstand zu den X-Achsen-Grenzen notwendig, damit ausreichend Beschleunigungsweg vorhanden ist. Dafür kann der 100x100mm Abstandshalter benutzt werden.</li>
+</ol>
+<h2 id="fokussieren"><a class="header" href="#fokussieren">Fokussieren</a></h2>
+<h3 id="automatisches-fokussieren"><a class="header" href="#automatisches-fokussieren">Automatisches Fokussieren</a></h3>
+<ol>
+<li>sicherstellen, dass sich das Material unter dem BL-Touch (TODO: Erklären was das ist) befindet.</li>
+<li>Das Makro <code>Z-Probe</code> über die <a href="http://laserkutter.lab.fablab-nea.de/">Weboberfläche</a> oder am Gerät über das Display aufrufen</li>
+<li>sicherstellen, dass sich der Laserkopf etwa 3mm über dem Material befindet</li>
+</ol>
+<h3 id="manuelles-fokussieren"><a class="header" href="#manuelles-fokussieren">Manuelles Fokussieren</a></h3>
+<p>Die Z-Achse muss so verfahren werden, dass zwischen Werkstück und Laserkopf etwa <strong>3mm</strong> Abstand sind. Dazu am besten millimeterweise den Laserkopf nach unten fahren.</p>
+<ul>
+<li><strong>größere</strong> Z-Achsen-Werte lassen den Laserkopf nach <strong>oben</strong> fahren</li>
+<li><strong>kleinere</strong> Z-Achsen-Werte lassen den Laserkopf nach <strong>unten</strong> fahren</li>
+</ul>
+<p>Der Abstand kann mittels der Kalibrierhilfe kontrolliert werden. Die Kalibrierhilfe darf sich aber niemals unter dem Laserkopf befinden, wenn dieser verfahren wird, da sonst die Achsenkalibrierung nicht mehr stimmt und das Gerät oder Material beschädigt werden könnte.</p>
+<h2 id="erzeugen-von-maschinencode"><a class="header" href="#erzeugen-von-maschinencode">Erzeugen von Maschinencode</a></h2>
+<ol>
+<li>LightBurn öffnen (<code>Anwendungen</code>→ <code>Grafik</code>→ <code>LightBurn</code>)</li>
+<li><code>File</code>→ <code>Import</code> oder <code>Ctrl</code>+<code>I</code>, dann die gewünschte Datei auswählen</li>
+<li>Power und Speed der Layer einstellen</li>
+<li>Im Dropdown <code>Start From</code> eine Option auswählen</li>
+</ol>
+<ul>
+<li><code>Absolute Coords</code>: Der Lasercutter verfährt exakt wie auf dem Bildschirm abgebildet</li>
+<li><code>Current Position</code>: Die aktuelle Position des Lasercutters entspricht dem grünen Punkt auf dem Bildschirm</li>
+</ul>
+<h2 id="Übertragung-des-maschinencodes-an-das-gerät"><a class="header" href="#Übertragung-des-maschinencodes-an-das-gerät">Übertragung des Maschinencodes an das Gerät</a></h2>
+<ol>
+<li><a href="http://laserkutter.lab.fablab-nea.de/">Weboberfläche des LaserKutters</a> öffnen.</li>
+<li>Button <code>UPLOAD &amp; START</code> rechts oben klicken</li>
+<li>die in LightBurn erzeugte GCode Datei auswählen</li>
+</ol>
+<h2 id="technische-details"><a class="header" href="#technische-details">Technische Details</a></h2>
 <p>Der <em>LaserKutter</em> ist ein <em>Bodor 1309XM</em> Laser-Cutter.
 Aufgrund von gravierenden Problemen mit dem Original-Board (Ruida RDC6332M),
 betreiben wir ihn mit einem Duet3D Mini5+ und einem PanelDue.</p>
-<h2 id="firmware-upgrade"><a class="header" href="#firmware-upgrade">Firmware-Upgrade</a></h2>
+<h3 id="firmware-upgrade"><a class="header" href="#firmware-upgrade">Firmware-Upgrade</a></h3>
 <ol>
 <li>Herunterladen der neuesten Firmware von <a href="https://github.com/Duet3D/RepRapFirmware/releases">https://github.com/Duet3D/RepRapFirmware/releases</a>
 <ul>
