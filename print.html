@@ -200,34 +200,21 @@ und <code>bar</code> hinter beides</li>
 </ol>
 <h2 id="einlegen-des-materials"><a class="header" href="#einlegen-des-materials">Einlegen des Materials</a></h2>
 <ol>
-<li>Das Portal nach hinten fahren, dazu am besten Makro <code>Be- und Entladen</code> über die <a href="http://laserkutter.lab.fablab-nea.de/">Weboberfläche</a> oder am Gerät über das Display ausführen.</li>
+<li>Das Portal nach hinten fahren, dazu am besten Makro <code>Move-Y-and-Z-to-max</code> über die <a href="http://laserkutter.lab.fablab-nea.de/">Weboberfläche</a> oder am Gerät über das Display ausführen.</li>
 <li>Die Klappe öffnen</li>
+<li>Bei sehr hohen Werkstücken ggf. den Wabentisch (U-Achse) nach unten verfahren. Der Tisch lässt sich zwischen 0 (oben) und -280 (unten) verfahren.</li>
 <li>Am einfachsten ist es, das Material links unten (Koordinate <code>X0 Y0</code>) auszurichten. Bei Gravuren ist eventuell ein Abstand zu den X-Achsen-Grenzen notwendig, damit ausreichend Beschleunigungsweg vorhanden ist. Dafür kann der 100x100mm Abstandshalter benutzt werden.</li>
 </ol>
-<h2 id="fokussieren"><a class="header" href="#fokussieren">Fokussieren</a></h2>
-<h3 id="automatisches-fokussieren"><a class="header" href="#automatisches-fokussieren">Automatisches Fokussieren</a></h3>
-<ol>
-<li>sicherstellen, dass sich das Material unter dem BL-Touch (TODO: Erklären was das ist) befindet.</li>
-<li>Das Makro <code>Z-Probe</code> über die <a href="http://laserkutter.lab.fablab-nea.de/">Weboberfläche</a> oder am Gerät über das Display aufrufen</li>
-<li>sicherstellen, dass sich der Laserkopf etwa 3mm über dem Material befindet</li>
-</ol>
-<h3 id="manuelles-fokussieren"><a class="header" href="#manuelles-fokussieren">Manuelles Fokussieren</a></h3>
-<p>Die Z-Achse muss so verfahren werden, dass zwischen Werkstück und Laserkopf etwa <strong>3mm</strong> Abstand sind. Dazu am besten millimeterweise den Laserkopf nach unten fahren.</p>
-<ul>
-<li><strong>größere</strong> Z-Achsen-Werte lassen den Laserkopf nach <strong>oben</strong> fahren</li>
-<li><strong>kleinere</strong> Z-Achsen-Werte lassen den Laserkopf nach <strong>unten</strong> fahren</li>
-</ul>
-<p>Der Abstand kann mittels der Kalibrierhilfe kontrolliert werden. Die Kalibrierhilfe darf sich aber niemals unter dem Laserkopf befinden, wenn dieser verfahren wird, da sonst die Achsenkalibrierung nicht mehr stimmt und das Gerät oder Material beschädigt werden könnte.</p>
 <h2 id="erzeugen-von-maschinencode"><a class="header" href="#erzeugen-von-maschinencode">Erzeugen von Maschinencode</a></h2>
 <ol>
 <li>LightBurn öffnen (<code>Anwendungen</code>→ <code>Grafik</code>→ <code>LightBurn</code>)</li>
-<li><code>File</code>→ <code>Import</code> oder <code>Ctrl</code>+<code>I</code>, dann die gewünschte Datei auswählen</li>
-<li>Power und Speed der Layer einstellen</li>
-<li>Im Dropdown <code>Start From</code> eine Option auswählen</li>
+<li><code>Datei</code>→ <code>Importieren</code> oder <code>Ctrl</code>+<code>I</code>, dann die gewünschte Datei auswählen</li>
+<li>Leistung (Power), Geschwindigkeit(Speed) und Materialstärke der Layer einstellen</li>
+<li>Im Dropdown <code>Starten von</code> eine Option auswählen</li>
 </ol>
 <ul>
-<li><code>Absolute Coords</code>: Der Lasercutter verfährt exakt wie auf dem Bildschirm abgebildet</li>
-<li><code>Current Position</code>: Die aktuelle Position des Lasercutters entspricht dem grünen Punkt auf dem Bildschirm</li>
+<li>Empfehlung: <code>Absolute Koordinaten</code>: Der Lasercutter verfährt exakt wie auf dem Bildschirm abgebildet</li>
+<li><code>Aktuelle Position</code>: Die aktuelle Position des Lasercutters entspricht dem grünen Punkt auf dem Bildschirm. <strong>Vorsicht! Bug in LightBurn:</strong> Wenn Materialstärke &gt; 0mm eingestellt ist, verfährt auch die Z-Achse relativ. Diese Konstellation sollte also vermieden werden.</li>
 </ul>
 <h2 id="Übertragung-des-maschinencodes-an-das-gerät"><a class="header" href="#Übertragung-des-maschinencodes-an-das-gerät">Übertragung des Maschinencodes an das Gerät</a></h2>
 <ol>
@@ -240,6 +227,7 @@ und <code>bar</code> hinter beides</li>
 Aufgrund von gravierenden Problemen mit dem Original-Board (Ruida RDC6332M),
 betreiben wir ihn mit einem Duet3D Mini5+ und einem PanelDue.</p>
 <h3 id="firmware-upgrade"><a class="header" href="#firmware-upgrade">Firmware-Upgrade</a></h3>
+<h4 id="mainboard"><a class="header" href="#mainboard">Mainboard</a></h4>
 <ol>
 <li>Herunterladen der neuesten Firmware von <a href="https://github.com/Duet3D/RepRapFirmware/releases">https://github.com/Duet3D/RepRapFirmware/releases</a>
 <ul>
@@ -258,6 +246,17 @@ und <code>M997 Bn</code> für das Expansion-Board, wobei <code>n</code> für die
 aktualisiert werden</li>
 <li>Mit <a href="https://duet3d.dozuki.com/Wiki/M115"><code>M115</code></a> kann die Firmware-Version des Haupt-Boards abgefragt werden,
 mit <code>M115 Bn</code> kann die Firmware-Version des Expansion-Boards mit CAN-Bus-Adresse <code>n</code> abgefragt werden</li>
+</ol>
+<h4 id="weboberfläche"><a class="header" href="#weboberfläche">Weboberfläche</a></h4>
+<ol>
+<li>Herunterladen des letzten Releases von https://github.com/Duet3D/DuetWebControl/releases</li>
+<li>Entpacken der <code>.zip</code> Datei und kopieren des Inhalts auf die SD-Karte in das <code>www</code>-Verzeichnis.</li>
+</ol>
+<h4 id="paneldue"><a class="header" href="#paneldue">PanelDue</a></h4>
+<ol>
+<li>Herunterladen der <code>*-7.0i.bin</code> Datei des letzten Releases von <a href="https://github.com/Duet3D/PanelDueFirmware/releases">https://github.com/Duet3D/PanelDueFirmware/releases</a></li>
+<li>Hochladen der Datei (Web-Interface: Files → System → Upload System Files)</li>
+<li>Dateiname anpassen und G-Code ausführen <code>M997 S4 P&quot;PanelDueFirmware-3.4.0-pre3-v3-7.0.bin&quot;</code></li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cnc-fräse-gp10050"><a class="header" href="#cnc-fräse-gp10050">CNC Fräse Gp10050</a></h1>
 <h2 id="komponenten"><a class="header" href="#komponenten">Komponenten</a></h2>
