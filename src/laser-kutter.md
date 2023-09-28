@@ -24,31 +24,18 @@ Zum Gravieren reicht eine Bitmap-Grafik, eine Vektorgrafik kann natürlich auch 
 
 
 ## Einlegen des Materials
-1. Das Portal nach hinten fahren, dazu am besten Makro `Be- und Entladen` über die [Weboberfläche](http://laserkutter.lab.fablab-nea.de/) oder am Gerät über das Display ausführen.
+1. Das Portal nach hinten fahren, dazu am besten Makro `Move-Y-and-Z-to-max` über die [Weboberfläche](http://laserkutter.lab.fablab-nea.de/) oder am Gerät über das Display ausführen.
 2. Die Klappe öffnen
-3. Am einfachsten ist es, das Material links unten (Koordinate `X0 Y0`) auszurichten. Bei Gravuren ist eventuell ein Abstand zu den X-Achsen-Grenzen notwendig, damit ausreichend Beschleunigungsweg vorhanden ist. Dafür kann der 100x100mm Abstandshalter benutzt werden.
-
-## Fokussieren
-
-### Automatisches Fokussieren
-1. sicherstellen, dass sich das Material unter dem BL-Touch (TODO: Erklären was das ist) befindet.
-2. Das Makro `Z-Probe` über die [Weboberfläche](http://laserkutter.lab.fablab-nea.de/) oder am Gerät über das Display aufrufen
-3. sicherstellen, dass sich der Laserkopf etwa 3mm über dem Material befindet
-
-### Manuelles Fokussieren
-Die Z-Achse muss so verfahren werden, dass zwischen Werkstück und Laserkopf etwa **3mm** Abstand sind. Dazu am besten millimeterweise den Laserkopf nach unten fahren.
-- **größere** Z-Achsen-Werte lassen den Laserkopf nach **oben** fahren
-- **kleinere** Z-Achsen-Werte lassen den Laserkopf nach **unten** fahren
-
-Der Abstand kann mittels der Kalibrierhilfe kontrolliert werden. Die Kalibrierhilfe darf sich aber niemals unter dem Laserkopf befinden, wenn dieser verfahren wird, da sonst die Achsenkalibrierung nicht mehr stimmt und das Gerät oder Material beschädigt werden könnte.
+3. Bei sehr hohen Werkstücken ggf. den Wabentisch (U-Achse) nach unten verfahren. Der Tisch lässt sich zwischen 0 (oben) und -280 (unten) verfahren.
+4. Am einfachsten ist es, das Material links unten (Koordinate `X0 Y0`) auszurichten. Bei Gravuren ist eventuell ein Abstand zu den X-Achsen-Grenzen notwendig, damit ausreichend Beschleunigungsweg vorhanden ist. Dafür kann der 100x100mm Abstandshalter benutzt werden.
 
 ## Erzeugen von Maschinencode
 1. LightBurn öffnen (`Anwendungen`→ `Grafik`→ `LightBurn`)
-2. `File`→ `Import` oder `Ctrl`+`I`, dann die gewünschte Datei auswählen
-3. Power und Speed der Layer einstellen
-4. Im Dropdown `Start From` eine Option auswählen
-  - `Absolute Coords`: Der Lasercutter verfährt exakt wie auf dem Bildschirm abgebildet
-  - `Current Position`: Die aktuelle Position des Lasercutters entspricht dem grünen Punkt auf dem Bildschirm
+2. `Datei`→ `Importieren` oder `Ctrl`+`I`, dann die gewünschte Datei auswählen
+3. Leistung (Power), Geschwindigkeit(Speed) und Materialstärke der Layer einstellen
+4. Im Dropdown `Starten von` eine Option auswählen
+  - Empfehlung: `Absolute Koordinaten`: Der Lasercutter verfährt exakt wie auf dem Bildschirm abgebildet
+  - `Aktuelle Position`: Die aktuelle Position des Lasercutters entspricht dem grünen Punkt auf dem Bildschirm. **Vorsicht! Bug in LightBurn:** Wenn Materialstärke > 0mm eingestellt ist, verfährt auch die Z-Achse relativ. Diese Konstellation sollte also vermieden werden.
 
 ## Übertragung des Maschinencodes an das Gerät
 1. [Weboberfläche des LaserKutters](http://laserkutter.lab.fablab-nea.de/) öffnen.
@@ -61,6 +48,8 @@ Aufgrund von gravierenden Problemen mit dem Original-Board (Ruida RDC6332M),
 betreiben wir ihn mit einem Duet3D Mini5+ und einem PanelDue.
 
 ### Firmware-Upgrade
+
+#### Mainboard
 1. Herunterladen der neuesten Firmware von <https://github.com/Duet3D/RepRapFirmware/releases>
    + Nur für das erste Update: `Duet3_SDiap32_Mini5plus.bin`
    + Für das Haupt-Board: `Duet3Firmware_Mini5plus.uf2`
@@ -75,3 +64,12 @@ betreiben wir ihn mit einem Duet3D Mini5+ und einem PanelDue.
    aktualisiert werden
 5. Mit [`M115`](https://duet3d.dozuki.com/Wiki/M115) kann die Firmware-Version des Haupt-Boards abgefragt werden,
    mit `M115 Bn` kann die Firmware-Version des Expansion-Boards mit CAN-Bus-Adresse `n` abgefragt werden
+
+#### Weboberfläche
+1. Herunterladen des letzten Releases von https://github.com/Duet3D/DuetWebControl/releases
+2. Entpacken der `.zip` Datei und kopieren des Inhalts auf die SD-Karte in das `www`-Verzeichnis.
+
+#### PanelDue
+1. Herunterladen der `*-7.0i.bin` Datei des letzten Releases von <https://github.com/Duet3D/PanelDueFirmware/releases>
+2. Hochladen der Datei (Web-Interface: Files → System → Upload System Files)
+3. Dateiname anpassen und G-Code ausführen `M997 S4 P"PanelDueFirmware-3.4.0-pre3-v3-7.0.bin"`
