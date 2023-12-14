@@ -1,5 +1,12 @@
 # LaserKutter
 
+## Schnittdatentabelle
+
+Material|Materialdicke|Geschwindigkeit|Leistung|Durchgänge|Sonstiges
+--------|-------------|---------------|--------|----------|---------
+MDF     |5mm          |35 mm/s        |25%     |4         |Überschnitt 10mm         
+HDF     |3mm          |45 mm/s        |27,5%   |3         |
+
 ## Benutzung eines Lasercutters
 
 ### Schneiden
